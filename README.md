@@ -36,7 +36,29 @@ gcloud container clusters create jenkins-cd \
 kubectl create clusterrolebinding cluster-admin-binding \
   --clusterrole=cluster-admin --user=$(gcloud config get-value account)
 ```
-
+## Use Helm to install Jenkins on GKE
+1. Add the Jenkins Helm repository
+```
+helm repo add jenkinsci https://charts.jenkins.io
+helm repo update
+```
+2. The Jenkins installation is configured via the custom jenkins/values.yaml file. Use Helm CLI to deploy Jenkins using your custom configuration.
+`helm install cd-jenkins -f jenkins/values.yaml jenkinsci/jenkins --wait`
+3. Make sure the Jenkins pod is in a 'Running' state and the containers are in a 'Ready' state.
+`kubectl get pods`
+Under 'READY' you should see '2/2' and under 'STATUS' you should see 'Running'
+```
+NAME           READY   STATUS    RESTARTS   AGE
+cd-jenkins-0   2/2     Running   0          6m30s
+```
+5. Verify that the Kubernetes services were created
+`kubectl get svc`
+```
+NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)     AGE
+cd-jenkins         ClusterIP   10.124.15.149   <none>        8080/TCP    12m
+cd-jenkins-agent   ClusterIP   10.124.11.222   <none>        50000/TCP   12m
+kubernetes         ClusterIP   10.124.0.1      <none>        443/TCP     51m
+```
 
 
 # Resources
