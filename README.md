@@ -24,7 +24,19 @@ environment {
     JENKINS_CRED = "${PROJECT}"
   }
 ```
-Save and quit.
+4. Create the GKE cluster using the gcloud tool and specify the relevant region for the cluster
+```
+gcloud container clusters create jenkins-cd \
+  --zone us-west1-a --scopes cloud-platform
+```
+5. Confirm that you can connect to your cluster
+`kubectl cluster-info`
+6. Create a ClusterRole and ClusterRoleBinding in GKE's RBAC to make your account a cluster administrator so that you can give Jenkins permissions in the cluster
+```
+kubectl create clusterrolebinding cluster-admin-binding \
+  --clusterrole=cluster-admin --user=$(gcloud config get-value account)
+```
+
 
 
 # Resources
