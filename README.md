@@ -11,8 +11,8 @@ Create a CI-CD pipeline for testing and deployment of containerized applications
 `git clone https://github.com/GoogleCloudPlatform/continuous-deployment-on-kubernetes.git`
 2. Once cloned, change to the /continuous-deployment-on-kubernetes directory
 `cd continuous-deployment-on-kubernetes`
-3. Edit the /sample-app/Jenskinsfile to reflect the desired region for your GKE cluster
-`vi /sample-app/Jenkinsfile` press 'i' to edit the 'CLUSTER_ZONE' value
+3. Edit the 'CLUSTER_ZONE' value inside /sample-app/Jenskinsfile to reflect the desired region for your GKE cluster
+`vi /sample-app/Jenkinsfile`
 ```
 environment {
     PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
@@ -24,7 +24,7 @@ environment {
     JENKINS_CRED = "${PROJECT}"
   }
 ```
-press ':wq' to save and quit
+Save and quit.
 
 
 # Resources
