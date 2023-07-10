@@ -68,6 +68,7 @@ kubectl port-forward $POD_NAME 8080:8080 >> /dev/null 2>&1 &
 ```
 2. Access the Jenkins UI by clicking "Web Preview" in Cloud Shell and "Preview on port 8080"
 
+## Configure Jenkins
 
 # Resources
 1. https://cloud.google.com/kubernetes-engine/docs/archive/jenkins-on-kubernetes-engine-tutorial
