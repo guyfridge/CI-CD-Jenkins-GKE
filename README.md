@@ -69,6 +69,14 @@ kubectl port-forward $POD_NAME 8080:8080 >> /dev/null 2>&1 &
 2. Access the Jenkins UI by clicking "Web Preview" in Cloud Shell and "Preview on port 8080"
 
 ## Configure Jenkins
+### Secure Jenkins
+1. Go to Dashboard > Manage Jenkins > Security
+2. Check "Disable remember me" to force users to login each time they access the Jenkins UI
+3. Under "Security Realm", select "Jenkins Own User Database"
+4. Leave "Allow users to sign up" unchecked so that the administrator has to create all the user accounts manually
+5. Under "Authorization" select "Logged in users can do anything" which will enable users with accounts to have full access to Jenkins
+### Enable Distributed Builds
+1. 
 
 # Resources
 1. https://cloud.google.com/kubernetes-engine/docs/archive/jenkins-on-kubernetes-engine-tutorial
