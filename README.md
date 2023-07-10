@@ -1,5 +1,5 @@
-# CI-CD with Jenkins, Docker, and GKE
-Create a CI-CD pipeline for testing and deployment of containerized applications using Jenkins, Docker, and GKE
+# Setting up GKE with Jenkins
+Create the basis of a CI-CD pipeline for testing and deployment of containerized applications using Jenkins and GKE
 
 ## Prerequisites
 1. Create a new project inside your Google Cloud account
@@ -59,10 +59,18 @@ cd-jenkins         ClusterIP   10.124.15.149   <none>        8080/TCP    12m
 cd-jenkins-agent   ClusterIP   10.124.11.222   <none>        50000/TCP   12m
 kubernetes         ClusterIP   10.124.0.1      <none>        443/TCP     51m
 ```
+## Connect your GKE cluster to Jenkins
+
+1. Set up port forwarding to the Jenkins UI from Cloud Shell
+```
+export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/component=jenkins-master" -l "app.kubernetes.io/instance=cd-jenkins" -o jsonpath="{.items[0].metadata.name}")
+kubectl port-forward $POD_NAME 8080:8080 >> /dev/null 2>&1 &
+```
+2. Access the Jenkins UI by clicking "Web Preview" in Cloud Shell and "Preview on port 8080"
 
 
 # Resources
-1. https://docs.bitnami.com/tutorials/create-ci-cd-pipeline-jenkins-gke/
-2. https://cloud.google.com/kubernetes-engine/docs/archive/jenkins-on-kubernetes-engine-tutorial
-3. https://cloud.google.com/kubernetes-engine/docs/archive/continuous-delivery-jenkins-kubernetes-engine
-4. https://cloud.google.com/architecture/using-jenkins-for-distributed-builds-on-compute-engine
+1. https://cloud.google.com/kubernetes-engine/docs/archive/jenkins-on-kubernetes-engine-tutorial
+2. https://docs.bitnami.com/tutorials/create-ci-cd-pipeline-jenkins-gke/
+4. https://cloud.google.com/kubernetes-engine/docs/archive/continuous-delivery-jenkins-kubernetes-engine
+5. https://cloud.google.com/architecture/using-jenkins-for-distributed-builds-on-compute-engine
