@@ -81,7 +81,8 @@ By default, Jenkins will execute builds on the built-in node. This poses a poten
 1. Isolate the built-in node: go to Manage Jenkins > Nodes and Clouds then select the built-in node from the list.
 2. Click the gear icon and select "Configure"
 3. Set the number of executors to 0 and save
-4. 
+### Configure Jenkins agents to run builds
+
 
 # Resources
 1. https://cloud.google.com/kubernetes-engine/docs/archive/jenkins-on-kubernetes-engine-tutorial
