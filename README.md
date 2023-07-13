@@ -70,13 +70,18 @@ kubectl port-forward $POD_NAME 8080:8080 >> /dev/null 2>&1 &
 
 ## Configure Jenkins
 ### Secure Jenkins
+Restricting the permissions of certain users and the channels through which new users can be created is a critical part of maintaining the security and stability of the Jenkins system. In our case we will delegate the responsibility of user creation to the system administrator so as to ensure that only authorized and trusted individuals are able to access the Jenkins UI.
 1. Go to Dashboard > Manage Jenkins > Security
 2. Check "Disable remember me" to force users to login each time they access the Jenkins UI
 3. Under "Security Realm", select "Jenkins Own User Database"
 4. Leave "Allow users to sign up" unchecked so that the administrator has to create all the user accounts manually
 5. Under "Authorization" select "Logged in users can do anything" which will enable users with accounts to have full access to Jenkins
-### Enable Distributed Builds
-1. 
+### Setting up Distributed Builds
+By default, Jenkins will execute builds on the built-in node. This poses a potential threat to the stability of the Jenkins system in that the build scripts have full access to the Jenkins home directory and may alter, overwrite, or delete critical data. 
+1. Isolate the built-in node: go to Manage Jenkins > Nodes and Clouds then select the built-in node from the list.
+2. Click the gear icon and select "Configure"
+3. Set the number of executors to 0 and save
+4. 
 
 # Resources
 1. https://cloud.google.com/kubernetes-engine/docs/archive/jenkins-on-kubernetes-engine-tutorial
