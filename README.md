@@ -79,7 +79,7 @@ Restricting the permissions of certain users and the channels through which new 
 ### Setting up Distributed Builds
 By default, Jenkins will execute builds on the built-in node. This poses a potential threat to the stability of the Jenkins system in that the build scripts have full access to the Jenkins home directory and may alter, overwrite, or delete critical data. 
 1. Isolate the built-in node: go to Manage Jenkins > Nodes and Clouds then select the built-in node from the list.
-2. Click the gear icon and select "Configure"
+2. Click the gear icon
 3. Set the number of executors to 0 and save
 ### Configure Jenkins agents to run builds
 
