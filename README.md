@@ -1,5 +1,5 @@
 # Setting up GKE with Jenkins
-Create the basis of a CI-CD pipeline for testing and deployment of containerized applications using Jenkins and GKE
+Create the basis of a CI-CD pipeline for testing code using Jenkins and GKE
 
 ## Prerequisites
 1. Create a new project inside your Google Cloud account
@@ -76,12 +76,11 @@ Restricting the permissions of certain users and the channels through which new 
 3. Under "Security Realm", select "Jenkins Own User Database"
 4. Leave "Allow users to sign up" unchecked so that the administrator has to create all the user accounts manually
 5. Under "Authorization" select "Logged in users can do anything" which will enable users with accounts to have full access to Jenkins
-### Setting up Distributed Builds
+### Isolate the built-in node
 By default, Jenkins will execute builds on the built-in node. This poses a potential threat to the stability of the Jenkins system in that the build scripts have full access to the Jenkins home directory and may alter, overwrite, or delete critical data. 
 1. Isolate the built-in node: go to Manage Jenkins > Nodes and Clouds then select the built-in node from the list.
 2. Click the gear icon
 3. Set the number of executors to 0 and save
-### Configure Jenkins agents to run builds
 
 
 # Resources
@@ -89,3 +88,6 @@ By default, Jenkins will execute builds on the built-in node. This poses a poten
 2. https://docs.bitnami.com/tutorials/create-ci-cd-pipeline-jenkins-gke/
 4. https://cloud.google.com/kubernetes-engine/docs/archive/continuous-delivery-jenkins-kubernetes-engine
 5. https://cloud.google.com/architecture/using-jenkins-for-distributed-builds-on-compute-engine
+6. https://www.jenkins.io/doc/book/security/controller-isolation/
+7. https://www.jenkins.io/doc/book/security/managing-security/
+
