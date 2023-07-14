@@ -12,7 +12,7 @@ Create the basis of a CI-CD pipeline for testing and deployment of containerized
 2. Once cloned, change to the /continuous-deployment-on-kubernetes directory
 `cd continuous-deployment-on-kubernetes`
 3. Edit the 'CLUSTER_ZONE' value inside /sample-app/Jenskinsfile to reflect the desired region for your GKE cluster
-`vi /sample-app/Jenkinsfile`
+`vi sample-app/Jenkinsfile`
 ```
 environment {
     PROJECT = "REPLACE_WITH_YOUR_PROJECT_ID"
